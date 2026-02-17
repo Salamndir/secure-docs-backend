@@ -63,7 +63,7 @@ public class NoteService {
     /**
      * Retrieves all notes belonging to the current user.
      */
-    @Transactional(readOnly = true)
+    // @Transactional(readOnly = true) 
     public List<NoteResponse> getUserNotes() {
 
         User user = securityUtils.getCurrentUser();
