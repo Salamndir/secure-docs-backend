@@ -1,45 +1,32 @@
-# Secure Docs — Angular Frontend
+Secure Docs — Spring Boot Backend
+REST API built with Spring Boot 3 and Java 21, secured via Keycloak OIDC and deployed as a Docker container.
 
-Angular 19 SPA designed for **Arabic and English** users,
-featuring dynamic theming and centralized HTTP handling.
+Implementation Details
 
----
+1. Bilingual Error Handling
+The API responds in Arabic or English based on the client's Accept-Language header.
+A @ControllerAdvice intercepts all exceptions and returns a consistent JSON error structure with a localized message.
 
-## Implementation Details
 
-### 1. RTL/LTR Support
+json// Accept-Language: ar
+{ "status": 404, "message": "المورد غير موجود" }
 
-Language selection dynamically switches layout direction (`dir="rtl"/"ltr"`)
-and updates Angular locales for correct date and number formatting.
-Designed to match the backend's bilingual API responses end-to-end.
+// Accept-Language: en
+{ "status": 404, "message": "Resource not found" }
 
-### 2. HTTP Interceptors
 
-Cross-cutting concerns are handled at the interceptor level:
+2. Role-Based Access Control
+Integrated with Keycloak (OIDC) for identity management.
+JWT tokens are validated on every secured request.
 
-- **Auth Interceptor:** Attaches the Keycloak JWT token to every outgoing API request.
-- **Error Interceptor:** Catches HTTP errors globally and displays them via a centralized **Toast Message Service**, Developers don't need to write try/catch blocks in every component.
 
-### 3. Dynamic Theming
+3. Database Schema Management
+All schema changes are managed via Liquibase changelogs,
+ensuring consistent and reproducible database states across environments.
 
-Supports runtime switching between **Dark** and **Light** modes via PrimeNG,
-without page reloads.
 
-### 4. Container Design
+Tech Stack
+Java 21 · Spring Boot 3.2 · Spring Security 6 · PostgreSQL 15 · Liquibase · Docker
 
-The Docker image uses a **multi-stage build**:
-
-1. **Node stage** — compiles Angular source to static artifacts.
-2. **Nginx stage** — serves artifacts with SPA routing (`try_files`) and Gzip compression.
-
----
-
-## Tech Stack
-
-Angular 19 · TypeScript · PrimeNG · Nginx · Docker
-
----
-
-## Deployment
-
+Deployment
 Managed via [secure-docs-deploy](https://github.com/Salamndir/secure-docs-deploy)
