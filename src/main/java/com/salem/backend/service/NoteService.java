@@ -71,7 +71,7 @@ public class NoteService {
         List<Note> notes = noteRepository.findByUserId(user.getId());
 
         if (notes.isEmpty()) {
-            // throw new BusinessException(enErrorCode.NOTE_NOT_FOUND); // Optional: Decide if you want to throw an exception or return an empty list when no notes are found
+            // throw new BusinessException(enErrorCode.NOTE_NOT_FOUND); // Optional: Decide if you want to throw an exception or return an empty list when it is new user or no notes are found
             log.info("No notes found for user with ID: {}", user.getId());
 
             return new ArrayList<>(); // Return empty list if no notes are found
