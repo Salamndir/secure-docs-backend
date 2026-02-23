@@ -25,8 +25,7 @@ RUN apk add --no-cache tzdata
 ENV TZ=Asia/Riyadh
 
 # Copy the executable JAR from the builder stage
-COPY --from=builder /app/target/*.jar app.jar
-
+COPY target/*.jar app.jar
 # Expose the application port
 EXPOSE 8080
 
