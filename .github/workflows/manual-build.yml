@@ -42,9 +42,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 3. Build the JAR file (Skips tests for speed, remove -DskipTests to enforce testing)
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+      # 3. 3. Build the JAR file using Maven Wrapper
+      - name: Build with Maven Wrapper
+        # use my ./mvnw instead of mvn to ensure consistent Maven version across environments
+        run: ./mvnw clean package
+        # -DskipTests, No more runs away from Tests
 
       # 4. Authenticate with Docker Hub using repository secrets
       - name: Log in to Docker Hub

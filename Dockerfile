@@ -1,20 +1,22 @@
-# ==========================================
-# Stage 1: Build Stage
-# ==========================================
-FROM maven:3.9.6-eclipse-temurin-21-alpine AS builder
-WORKDIR /app
+#  ==========================================
+# # Stage 1: Build Stage
+# # ==========================================
+# FROM maven:3.9.6-eclipse-temurin-21-alpine AS builder
+# WORKDIR /app
 
-# Copy configuration first to leverage Docker cache for dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# # Copy configuration first to leverage Docker cache for dependencies
+# COPY pom.xml .
+# RUN mvn dependency:go-offline -B
 
-# Copy source code and build the artifact
-COPY src ./src
-RUN mvn clean package -DskipTests
+# # Copy source code and build the artifact
+# COPY src ./src
+# RUN mvn clean package -DskipTests
 
 # ==========================================
-# Stage 2: Runtime Stage
+# Runtime Stage (CI-Driven Build)
 # ==========================================
+
+# Using a lightweight JRE image since the application is already compiled by GitHub Actions
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
