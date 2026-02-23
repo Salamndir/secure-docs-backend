@@ -10,7 +10,5 @@ import java.util.List;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-    // Select * from notes where user_id = ?
-    // لاحظ: نستخدم userId (الداخلي) للأداء العالي
     List<Note> findByUserId(Long userId);
 }

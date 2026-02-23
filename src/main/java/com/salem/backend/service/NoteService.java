@@ -143,8 +143,10 @@ public class NoteService {
 
     User currentUser = securityUtils.getCurrentUser();
 
+    
         Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new BusinessException(enErrorCode.NOTE_NOT_FOUND));
+
         // Security Check: Ownership validation
         if (!note.getUser().getId().equals(currentUser.getId())) {
             throw new BusinessException(enErrorCode.NOTE_OWNERSHIP_ERROR);
