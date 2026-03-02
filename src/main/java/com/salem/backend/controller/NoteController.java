@@ -74,6 +74,13 @@ public class NoteController {
 
 
 
+   @GetMapping("/api/crash")
+public String crashServer() {
+    throw new RuntimeException("This is a deliberate crash for Grafana!");
+}
+
+
+
 
    
 }
