@@ -23,7 +23,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
 
             // 2. تفعيل CORS للسماح للأنقولار بالاتصال بنا
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .cors(cors -> cors.configurationSource(corsConfigurationSource())) 
 
             // 3. جعل النظام Stateless (لا يحفظ جلسة المستخدم في السيرفر، يعتمد على التوكن فقط)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
