@@ -31,7 +31,7 @@ public class SecurityConfig {
             // 4. حماية الروابط
             .authorizeHttpRequests(auth -> auth
                 // نسمح ببعض الروابط العامة (مثل Swagger لو أضفته مستقبلاً)
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/actuator/health").permitAll()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/actuator/**").permitAll()
                 // أي طلب آخر يجب أن يكون معه توكن سليم
                 .anyRequest().authenticated()
             )
