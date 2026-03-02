@@ -81,15 +81,15 @@
         </dependency>
 
  <!-- it is just for test, in Prodction we don't Use it, we use OTLP Starndard  --> 
-        <!-- <dependency>
+        <dependency>
             <groupId>io.micrometer</groupId>              
             <artifactId>micrometer-registry-prometheus</artifactId>  
-        </dependency> -->
+        </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-otlp</artifactId>
-        </dependency>
+        </dependency> -->
 
         
 
