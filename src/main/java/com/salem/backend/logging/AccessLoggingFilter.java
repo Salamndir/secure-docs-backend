@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 
 @Slf4j
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE)
+@Order(Ordered.HIGHEST_PRECEDENCE + 10)  // to make it run after spring trace ID and before security filters
 public class AccessLoggingFilter implements Filter {
 
     @Override

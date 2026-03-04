@@ -68,6 +68,7 @@ public class NoteService {
 
         User user = securityUtils.getCurrentUser();
 
+
         List<Note> notes = noteRepository.findByUserId(user.getId());
 
         if (notes.isEmpty()) {
@@ -87,6 +88,9 @@ public class NoteService {
             NoteResponse response = mapToResponse(note);
             responseList.add(response);
         }
+
+                log.info("Fetching notes for user with ID: {}", user.getId());
+
 
         return responseList;
     }

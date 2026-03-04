@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version> 
+        <version>3.4.3</version> 
         <relativePath/>
     </parent>
     <groupId>com.salem</groupId>
@@ -83,6 +83,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+      
+
+        
+
  <!-- it is just for test, in Prodction we don't Use it, we use OTLP Starndard  --> 
         <!-- <dependency>
             <groupId>io.micrometer</groupId>              
@@ -99,6 +103,11 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-otel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
         </dependency>
 
 

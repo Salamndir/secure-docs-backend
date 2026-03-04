@@ -25,6 +25,10 @@ public class GlobalExceptionHandler {
     // 1. Validation Errors
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException ex) {
+
+        log.error("Unhandled Exception: ", ex); // Log full trace internally
+
+
         Map<String, String> errors = new HashMap<>();
 
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
@@ -55,6 +59,9 @@ public class GlobalExceptionHandler {
     // 2. Business Logic Errors
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleBusiness(BusinessException ex) {
+
+        log.error("Unhandled Exception: ", ex); // Log full trace internally
+
         // Read the key directly from the Enum: ex.getErrorCode().getMessageKey()
         String msg = getMessage(ex.getErrorCode().getMessageKey());
 
@@ -69,6 +76,7 @@ public class GlobalExceptionHandler {
     // 3. General System Errors
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneral(Exception ex) {
+
         log.error("Unhandled Exception: ", ex); // Log full trace internally
 
         // Use the Enum for Internal Error key
